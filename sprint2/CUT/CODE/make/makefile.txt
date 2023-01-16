@@ -1,0 +1,33 @@
+BIN = /home/system/MovieBooking/sprint2/CUT/CODE/bin
+INC = /home/system/MovieBooking/sprint2/CUT/CODEinc
+SRC = /home/system/MovieBooking/sprint2/CUT/CODE/src
+OBJ = /home/system/MovieBooking/sprint2/CUT/CODE/obj
+
+CFLAGS = -c -g -Wall
+LFLAGS = -o
+GCC = g++
+CVFLAGS = -Wall -c -g
+IFLAGS = -I $(INC)
+
+all : $(BIN)/client 
+
+$(OBJ)/client.o : $(SRC)/main.cpp
+	$(GCC) $(CFLAGS) $(SRC)/main.cpp $(IFLAGS)
+	mv *.o/home/system/MovieBooking/sprint2/CUT/CODE/obj
+
+$(OBJ)/member.o : $(SRC)/member.cpp
+	$(GCC) $(CFLAGS) $(SRC)/member.cpp $(IFLAGS)
+	mv *.o/home/system/MovieBooking/sprint2/CUT/CODE/obj
+
+$(OBJ)/customer.o : $(SRC)/customer.cpp
+	$(GCC) $(CFLAGS) $(SRC)/customer.cpp ($IFLAGS)
+	mv *.o//home/system/MovieBooking/sprint2/CUT/CODE/obj
+
+
+$(OBJ)/booking.o : $(SRC)/booking.cpp
+	$(GCC) $(CFLAGS) $(SRC)/booking.cpp $(IFLAGS)
+	mv *.o//home/system/MovieBooking/sprint2/CUT/CODE/obj
+
+$(BIN)/client : $(OBJ)/client.o $(OBJ)/member.o $(OBJ)/customer.o $(OBJ)/booking.o 
+	$(GCC) $(OBJ)/client.o $(OBJ)/member.o $(OBJ)/customer.o $(OBJ)/booking.o $(LFLAGS) $(BIN)/client
+
