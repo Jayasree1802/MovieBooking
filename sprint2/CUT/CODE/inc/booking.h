@@ -18,7 +18,7 @@ using namespace std;
  * Parameters   :   no parameters
  * Return type  :   no return type
  *
- * ***********************************************************
+ * ***********************************************************/
  
 class MovieBooking
 {
