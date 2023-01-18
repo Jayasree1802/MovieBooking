@@ -185,6 +185,8 @@ string Member:: getPassword()
 {
             return password;
 }
+
 Member::Member()
 {
+
 }
