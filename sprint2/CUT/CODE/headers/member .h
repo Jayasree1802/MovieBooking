@@ -18,10 +18,6 @@ using namespace std;
 *****************************************************************************************/
 class Member:public Customer
 {
-    private:
-       string icno,acc_num;
-       char password[MAXIMUM];
-       int valid_month, valid_year;
     public:
          void MemberInitialize(string,string,string,string,string,string,int,int);
          void setIC();
@@ -35,5 +31,10 @@ class Member:public Customer
          int getYear();
          string getPassword();
          Member ();
+         
+    private:
+       string icno,acc_num;
+       char password[MAXIMUM];
+       int valid_month, valid_year;
 };
 #endif /*__MEMBER_H__ */
