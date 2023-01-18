@@ -15,19 +15,23 @@ $(OBJ)/client.o : $(SRC)/main.cpp
 	$(GCC) $(CFLAGS) $(SRC)/main.cpp $(IFLAGS)
 	mv *.o/home/system/MovieBooking/sprint2/CUT/CODE/obj
 
-$(OBJ)/member.o : $(SRC)/member.cpp
-	$(GCC) $(CFLAGS) $(SRC)/member.cpp $(IFLAGS)
+$(OBJ)/member_def.o : $(SRC)/member_def.cpp
+	$(GCC) $(CFLAGS) $(SRC)/member_def.cpp $(IFLAGS)
 	mv *.o/home/system/MovieBooking/sprint2/CUT/CODE/obj
 
-$(OBJ)/customer.o : $(SRC)/customer.cpp
-	$(GCC) $(CFLAGS) $(SRC)/customer.cpp ($IFLAGS)
+$(OBJ)/customer_def.o : $(SRC)/customer_def.cpp
+	$(GCC) $(CFLAGS) $(SRC)/customer_def.cpp ($IFLAGS)
 	mv *.o//home/system/MovieBooking/sprint2/CUT/CODE/obj
 
 
-$(OBJ)/booking.o : $(SRC)/booking.cpp
-	$(GCC) $(CFLAGS) $(SRC)/booking.cpp $(IFLAGS)
+$(OBJ)/booking_def.o : $(SRC)/booking_def.cpp
+	$(GCC) $(CFLAGS) $(SRC)/booking_def.cpp $(IFLAGS)
 	mv *.o//home/system/MovieBooking/sprint2/CUT/CODE/obj
 
-$(BIN)/client : $(OBJ)/client.o $(OBJ)/member.o $(OBJ)/customer.o $(OBJ)/booking.o 
-	$(GCC) $(OBJ)/client.o $(OBJ)/member.o $(OBJ)/customer.o $(OBJ)/booking.o $(LFLAGS) $(BIN)/client
+$(BIN)/client : $(OBJ)/client.o $(OBJ)/member_def.o $(OBJ)/customer_def.o $(OBJ)/booking_def.o 
+	$(GCC) $(OBJ)/client.o $(OBJ)/member_def.o $(OBJ)/customer_def.o $(OBJ)/booking_def.o $(LFLAGS) $(BIN)/client
+
+clean:
+        rm *.o
+	rm *.gch
 
