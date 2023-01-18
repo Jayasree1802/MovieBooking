@@ -32,8 +32,6 @@ static vector<string> showtime3(MINIMUM);
 
 class Customer
 {
-    protected:
-         string name,email,phone_number;
     public:
         void setName();
         void setEmail();
@@ -43,5 +41,7 @@ class Customer
         string getEmail();
         ~Customer();
     
-};
+    protected:
+         string name,email,phone_number;
+ };
 #endif /*__CUSTOMER_H__ */
