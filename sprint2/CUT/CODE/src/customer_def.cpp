@@ -32,7 +32,7 @@ void Customer::setEmail()
 
             int email_length = email.length();
 
-            for (int check=0; check<email.length(); ++check)
+            for (int check=ZERO; check<email.length(); ++check)
             {
                 temp = email.at(check);
                 if (temp == '@' )
@@ -98,13 +98,6 @@ void Customer::setEmail()
         {
             return email;
         }
-
-/**************************************************************************************************************************************
- * Destructor     :   Customer
- * Description    :   It deallocate memory.
- * Parameters     :   no parameters
- * Return type    :   no return type
- * ***********************************************************************************************************************************/
 
       Customer:: ~Customer()
       {
