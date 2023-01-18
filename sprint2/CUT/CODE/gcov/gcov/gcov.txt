@@ -1,0 +1,55 @@
+File 'main.cpp'
+Lines executed:0.00% of 4
+Creating 'main.cpp.gcov'
+
+File '/usr/include/c++/9/bits/stl_construct.h'
+Lines executed:0.00% of 14
+Creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/9/bits/stl_vector.h'
+Lines executed:0.00% of 46
+Creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/9/iostream'
+No executable lines
+Removing 'iostream.gcov'
+
+File 'customer.h'
+No executable lines
+Removing 'customer.h.gcov'
+
+File '/usr/include/c++/9/bits/move.h'
+Lines executed:0.00% of 4
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/9/ext/new_allocator.h'
+Lines executed:0.00% of 12
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/9/bits/stl_uninitialized.h'
+Lines executed:0.00% of 10
+Creating 'stl_uninitialized.h.gcov'
+
+File '/usr/include/c++/9/bits/alloc_traits.h'
+Lines executed:0.00% of 6
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/9/bits/stl_algobase.h'
+Lines executed:0.00% of 4
+Creating 'stl_algobase.h.gcov'
+
+File '/usr/include/c++/9/bits/allocator.h'
+Lines executed:0.00% of 4
+Creating 'allocator.h.gcov'
+
+File '/usr/include/c++/9/bits/basic_string.h'
+No executable lines
+Removing 'basic_string.h.gcov'
+
+File 'booking.h'
+No executable lines
+Removing 'booking.h.gcov'
+
+File '/usr/include/c++/9/new'
+Lines executed:0.00% of 2
+Creating 'new.gcov'

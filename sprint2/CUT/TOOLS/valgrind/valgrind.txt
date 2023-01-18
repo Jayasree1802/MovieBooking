@@ -1,0 +1,26 @@
+==121== Process terminating with default action of signal 2 (SIGINT)
+==121==    at 0x4B5CFD2: read (read.c:26)
+==121==    by 0x4ADFB9E: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:517)
+==121==    by 0x4AE0F85: _IO_default_uflow (genops.c:362)
+==121==    by 0x495B4B0: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::underflow() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==121==    by 0x4969B11: std::istream::sentry::sentry(std::istream&, bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==121==    by 0x496B57F: std::basic_istream<char, std::char_traits<char> >& std::operator>><char, std::char_traits<char> >(std::basic_istream<char, std::char_traits<char> >&, char&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==121==    by 0x110C4C: MovieBooking::movie_booking() (in /home/system/sprint2_files/moviebooking)
+==121==    by 0x10DBBF: MovieBooking::menu() (in /home/system/sprint2_files/moviebooking)
+==121==    by 0x116CEC: main (in /home/system/sprint2_files/moviebooking)
+==121==
+==121== HEAP SUMMARY:
+==121==     in use at exit: 164 bytes in 15 blocks
+==121==   total heap usage: 40 allocs, 15 frees, 105,652 bytes allocated
+==121==
+==121== LEAK SUMMARY:
+==121==    definitely lost: 0 bytes in 0 blocks
+==121==    indirectly lost: 0 bytes in 0 blocks
+==121==      possibly lost: 0 bytes in 0 blocks
+==121==    still reachable: 164 bytes in 15 blocks
+==121==         suppressed: 0 bytes in 0 blocks
+==121== Reachable blocks (those to which a pointer was found) are not shown.
+==121== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==121==
+==121== For lists of detected and suppressed errors, rerun with: -s
+==121== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
