@@ -81,233 +81,6 @@ void MovieBooking:: title()
     cout << "\n\n";
 }
 
-
-/***************************************************************************
- * Function name:   ComapreNames
- * Description  :   This function is compare the two movie names 
- * Parameters   :   namespace of MOVIE with variables movie1 and movie2
- * Return type  :   return type is boolean
- * 
- * **************************************************************************/
-
-bool MovieBooking::CompareNames(Movie movie1, Movie movie2)
-{
-    if (movie2.name > movie1.name)
-        return true;  
-        return false;
-        
-}
-
-/**************************************************************************************************************************************
- * Function name:   ReadFile
- * Description  :   The ReadFile function is to read the data of the movies into the file  
- * Parameters   :   namespace MOVIES with reference variable movies and moviecount
- * Return type  :   return type is int
- * ***********************************************************************************************************************************/
-
-
-int MovieBooking::ReadFile(MOVIE &movies, int &movieCount)
-{
-
-    string file_name = "Movies.txt";  //filename
-    int insert=ZERO;
-    ifstream movies_file(file_name);
-
-    if (!movies_file){
-        cout << "\n File " << "\"" << file_name << "\"" << " did not open." << endl;
-    }
-
-    while (getline(movies_file, movies[insert].name, '|')){
-        getline(movies_file, movies[insert].day, '|');
-        getline(movies_file, movies[insert].time1, '|');
-        getline(movies_file, movies[insert].time2, '|');
-        getline(movies_file, movies[insert].time3);
-        movies_file.clear();
-
-        insert++;
-    }
-b
-    movieCount = insert + 1;  //added
-    return 1;
-}
-
-/**************************************************************************************************************************************
- * Function name:   showmovielist
- * Description  :   The showmovielist function is displays the movies list which are present in the file
- * Parameters   :   namespace MOVIES with reference variable movies and moviecount
- * Return type  :   no return type
- * ***********************************************************************************************************************************/
-
-
-void MovieBooking:: showmovielist(MOVIE& movies, const int movieCount)
-{
-
-    ifstream movie("Movies.txt");
-    title();
-    cout << "\n ";
-    for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
-                    cout << '=';
-            }
-    cout << endl
-         << "| SERIAL |";
-           for(int setwidth = ZERO; setwidth < SHOW_MOVIE_LIST; setwidth++){
-                    cout << '=';
-           }
-    cout << "|  SHOWTIME  | " << '\n'
-         << "| NUMBER |                 MOVIE NAME                    |  DAY  |  AVAILABLE | " << '\n'
-         << ' ';
-    for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
-                cout << '=';
-        }
-    cout << endl;
-
-    int s_no = ONE;
-    int print_movie = ONE;
-
-    sort(movies, movies + movieCount, CompareNames);
-
-    int moviec;
-    for (moviec = ONE; moviec < movieCount; moviec++)
-    {
-        if (movies[moviec+ONE].name == movies[moviec].name)
-        {
-            cout <<
-		                    "   (" << moviec << ")     " <<
-                std::left << setw(AVERAGE) <<
-                setw(MOVIE_NAME)<< movies[moviec].name << "    " <<
-                setw(MOVIE_DAY) << movies[moviec].day <<
-                "(" << s_no << ") " <<
-                movies[moviec].time1 << "\n" <<
-                setw(MOVIE_TIME1) << "                                                                                           ("<< s_no + 1 << ") " <<
-                movies[moviec].time2 << "\n" <<
-                setw(MOVIE_TIME1) << "                                                                                           ("<< s_no + 2 << ") " <<
-                movies[moviec].time3 << "\n";
-        }
-
-        else{
-                cout <<
-                    "   (" << moviec <<  ")     " << std::left << setw(AVERAGE) <<
-                    setw(MOVIE_NAME) << movies[moviec].name << "    " <<
-                    setw(MOVIE_DAY) << movies[moviec].day <<     
-                    "("<<s_no<<") " <<
-                    movies[moviec].time1 << "\n" <<
-                    setw(MOVIE_TIME1 ) << "                                                                       ("<<s_no + 1<<") " <<
-                    movies[moviec].time2 << "\n" <<
-                    setw(MOVIE_TIME1 ) << "                                                                        ("<<s_no + 2<<") " <<
-                    movies[moviec].time3 << "\n";
-
-                cout << ' ' ;
-                for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
-                        cout << '=';
-                }
-                cout << endl;
-        }
-
-         movie_name[print_movie] = movies[moviec].name;
-         movie_day[print_movie] = movies[moviec].day;
-         showtime1[print_movie] = movies[moviec].time1;
-         showtime2[print_movie] = movies[moviec].time2;
-         showtime3[print_movie] = movies[moviec].time3;
-         print_movie = print_movie + ONE;
-         s_no = ONE;
-    }
-   counter = moviec;
-}
-
-/**************************************************************************************************************************************
- * Function name:   time_checking
- * Description  :   The time_checking function to check the user entered time is available for show or not
- * Parameters   :   array of time with int type and time_ of int
- * Return type  :   no return type
- * ***********************************************************************************************************************************/
-
-
-void MovieBooking::time_checking(int time[], int time_)
-{
-    while(!cin >> time[time_])
-    {
-        cout << endl;
-        cout << " Enter a valid time: " ;
-        cin.clear();
-        cin.ignore(MINIMUM,'\n');
-        cin >> time[time_];
-    }
-
-    while((time[time_] > 2400) || (time[time_] < 0))
-    {
-        cout << endl;
-        cout << " You have entered a wrong time for movie. Enter again!!"<< endl;
-        cout << " Enter the time for " << time_ << " show  (HHMM): ";
-        cin >> time[time_];
-    }
-}
-
-/**************************************************************************************************************************************
- * Function name:   showTicket
- * Description  :   The showTicket function is display the ticket number for the user
- * Parameters   :   no parameters
- * Return type  :   no return type
- * ***********************************************************************************************************************************/
-
-void MovieBooking::showTicket(){
-
-    int ticket_num;
-
-    ticket_num = rand() % 9999999999 + 10000000000;//it gives random ticket_num
-    cout << endl << "   --------------------------------------" << endl;
-    cout << "     " << ticket_num << "             |" << endl;
-    cout << "   --------------------------------------" << endl << endl;
-    cout << " This is your ticket number !!! " << endl;
-    cout << " Thank you !!!" << endl;
-}
-/**************************************************************************************************************************************
- * Function name:   payment
- * Description  :   The payment takes card type ,card number choose by the user, whether to book movie or to cancel the ticket or to register.
- * Parameters   :   pay is the parameter
- * Return type  :   no return type
- * ***********************************************************************************************************************************/
-
-void MovieBooking::payment(float pay)
-{
-    char resp;
-    string card_type, card_num, cvv;
-    cout << " Select the payment method: " << endl;
-    cout << "                 (A) CASH  " << endl;
-    cout << "                 (B) DEBIT CARD " << endl;
-    cout << "                 (C) CREDIT CARD " << endl << endl;
-    cout << " Your option [A, B, C] :  ";
-    cin >> resp;
-    while((resp != 'A') && (resp != 'a') && (resp != 'B') && (resp != 'b') && (resp != 'C') && (resp != 'c') )
-    {
-        cout << " Please select a correct option [ a, b, c] : ";
-        cin >> resp;
-    }
-
-
-    title();
-    if (resp == 'A' || resp == 'a'){
-        cout << " You have selected to pay on cash" << endl;
-        cout << " The amount you need to pay is : RM " << pay << endl << endl;
-    }
-
-    else {
-        if(resp == 'B' || resp == 'b'){
-            card_type = "debit card";
-        }
-        else{
-        card_type = "credit card";
-        }
-
-        cout << "You have selected " << card_type << " to pay !!" << endl << endl;
-        cout << "The amount you need to pay is : RM " << pay << endl << endl;
-        cout << "Enter your " << card_type << " number: " ;
-        cin >> card_num;
-        cout << "\n Enter your CVV : " ;
-        cin >> cvv;
-        cout<<"Payment succesfull";
-    }
-
-}
 /**************************************************************************************************************************************
  * Function name:   member_reg
  * Description  :   The member_reg function is for registering new members
@@ -599,12 +372,240 @@ void MovieBooking::membership()
     }
 }
 
+
+/***************************************************************************
+ * Function name:   ComapreNames
+ * Description  :   This function is compare the two movie names 
+ * Parameters   :   namespace of MOVIE with variables movie1 and movie2
+ * Return type  :   return type is boolean
+ * 
+ * **************************************************************************/
+
+bool MovieBooking::CompareNames(Movie movie1, Movie movie2)
+{
+    if (movie2.name > movie1.name)
+        return true;  
+        return false;
+        
+}
+
 /**************************************************************************************************************************************
- * Function name:   movie_booking
- * Description  :   The movie_booking function is to booking the tickets for movie 
+ * Function name:   ReadFile
+ * Description  :   The ReadFile function is to read the data of the movies into the file  
+ * Parameters   :   namespace MOVIES with reference variable movies and moviecount
+ * Return type  :   return type is int
+ * ***********************************************************************************************************************************/
+
+
+int MovieBooking::ReadFile(MOVIE &movies, int &movieCount)
+{
+
+    string file_name = "Movies.txt";  //filename
+    int insert=ZERO;
+    ifstream movies_file(file_name);
+
+    if (!movies_file){
+        cout << "\n File " << "\"" << file_name << "\"" << " did not open." << endl;
+    }
+
+    while (getline(movies_file, movies[insert].name, '|')){
+        getline(movies_file, movies[insert].day, '|');
+        getline(movies_file, movies[insert].time1, '|');
+        getline(movies_file, movies[insert].time2, '|');
+        getline(movies_file, movies[insert].time3);
+        movies_file.clear();
+
+        insert++;
+    }
+
+    movieCount = insert + 1;  //added
+    return 1;
+}
+
+/**************************************************************************************************************************************
+ * Function name:   showmovielist
+ * Description  :   The showmovielist function is displays the movies list which are present in the file
+ * Parameters   :   namespace MOVIES with reference variable movies and moviecount
+ * Return type  :   no return type
+ * ***********************************************************************************************************************************/
+
+
+void MovieBooking:: showmovielist(MOVIE& movies, const int movieCount)
+{
+
+    ifstream movie("Movies.txt");
+    title();
+    cout << "\n ";
+    for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
+                    cout << '=';
+            }
+    cout << endl
+         << "| SERIAL |";
+           for(int setwidth = ZERO; setwidth < SHOW_MOVIE_LIST; setwidth++){
+                    cout << '=';
+           }
+    cout << "|  SHOWTIME  | " << '\n'
+         << "| NUMBER |                 MOVIE NAME                    |  DAY  |  AVAILABLE | " << '\n'
+         << ' ';
+    for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
+                cout << '=';
+        }
+    cout << endl;
+
+    int s_no = ONE;
+    int print_movie = ONE;
+
+    sort(movies, movies + movieCount, CompareNames);
+
+    int moviec;
+    for (moviec = ONE; moviec < movieCount; moviec++)
+    {
+        if (movies[moviec+ONE].name == movies[moviec].name)
+        {
+            cout <<
+		                    "   (" << moviec << ")     " <<
+                std::left << setw(AVERAGE) <<
+                setw(MOVIE_NAME)<< movies[moviec].name << "    " <<
+                setw(MOVIE_DAY) << movies[moviec].day <<
+                "(" << s_no << ") " <<
+                movies[moviec].time1 << "\n" <<
+                setw(MOVIE_TIME1) << "                                                                                           ("<< s_no + 1 << ") " <<
+                movies[moviec].time2 << "\n" <<
+                setw(MOVIE_TIME1) << "                                                                                           ("<< s_no + 2 << ") " <<
+                movies[moviec].time3 << "\n";
+        }
+
+        else{
+                cout <<
+                    "   (" << moviec <<  ")     " << std::left << setw(AVERAGE) <<
+                    setw(MOVIE_NAME) << movies[moviec].name << "    " <<
+                    setw(MOVIE_DAY) << movies[moviec].day <<     
+                    "("<<s_no<<") " <<
+                    movies[moviec].time1 << "\n" <<
+                    setw(MOVIE_TIME1 ) << "                                                                       ("<<s_no + 1<<") " <<
+                    movies[moviec].time2 << "\n" <<
+                    setw(MOVIE_TIME1 ) << "                                                                        ("<<s_no + 2<<") " <<
+                    movies[moviec].time3 << "\n";
+
+                cout << ' ' ;
+                for(int setwidth = ZERO; setwidth < WIDTH; setwidth++){
+                        cout << '=';
+                }
+                cout << endl;
+        }
+
+         movie_name[print_movie] = movies[moviec].name;
+         movie_day[print_movie] = movies[moviec].day;
+         showtime1[print_movie] = movies[moviec].time1;
+         showtime2[print_movie] = movies[moviec].time2;
+         showtime3[print_movie] = movies[moviec].time3;
+         print_movie = print_movie + ONE;
+         s_no = ONE;
+    }
+   counter = moviec;
+}
+
+/**************************************************************************************************************************************
+ * Function name:   time_checking
+ * Description  :   The time_checking function to check the user entered time is available for show or not
+ * Parameters   :   array of time with int type and time_ of int
+ * Return type  :   no return type
+ * ***********************************************************************************************************************************/
+
+
+void MovieBooking::time_checking(int time[], int time_)
+{
+    while(!cin >> time[time_])
+    {
+        cout << endl;
+        cout << " Enter a valid time: " ;
+        cin.clear();
+        cin.ignore(MINIMUM,'\n');
+        cin >> time[time_];
+    }
+
+    while((time[time_] > 2400) || (time[time_] < 0))
+    {
+        cout << endl;
+        cout << " You have entered a wrong time for movie. Enter again!!"<< endl;
+        cout << " Enter the time for " << time_ << " show  (HHMM): ";
+        cin >> time[time_];
+    }
+}
+
+/**************************************************************************************************************************************
+ * Function name:   showTicket
+ * Description  :   The showTicket function is display the ticket number for the user
  * Parameters   :   no parameters
  * Return type  :   no return type
  * ***********************************************************************************************************************************/
+
+void MovieBooking::showTicket(){
+
+    int ticket_num;
+
+    ticket_num = rand() % 9999999999 + 10000000000;//it gives random ticket_num
+    cout << endl << "   --------------------------------------" << endl;
+    cout << "     " << ticket_num << "             |" << endl;
+    cout << "   --------------------------------------" << endl << endl;
+    cout << " This is your ticket number !!! " << endl;
+    cout << " Thank you !!!" << endl;
+}
+/**************************************************************************************************************************************
+ * Function name:   payment
+ * Description  :   The payment takes card type ,card number choose by the user, whether to book movie or to cancel the ticket or to register.
+ * Parameters   :   pay is the parameter
+ * Return type  :   no return type
+ * ***********************************************************************************************************************************/
+
+void MovieBooking::payment(float pay)
+{
+    char resp;
+    string card_type, card_num, cvv;
+    cout << " Select the payment method: " << endl;
+    cout << "                 (A) CASH  " << endl;
+    cout << "                 (B) DEBIT CARD " << endl;
+    cout << "                 (C) CREDIT CARD " << endl << endl;
+    cout << " Your option [A, B, C] :  ";
+    cin >> resp;
+    while((resp != 'A') && (resp != 'a') && (resp != 'B') && (resp != 'b') && (resp != 'C') && (resp != 'c') )
+    {
+        cout << " Please select a correct option [ a, b, c] : ";
+        cin >> resp;
+    }
+
+
+    title();
+    if (resp == 'A' || resp == 'a'){
+        cout << " You have selected to pay on cash" << endl;
+        cout << " The amount you need to pay is : RM " << pay << endl << endl;
+    }
+
+    else {
+        if(resp == 'B' || resp == 'b'){
+            card_type = "debit card";
+        }
+        else{
+        card_type = "credit card";
+        }
+
+        cout << "You have selected " << card_type << " to pay !!" << endl << endl;
+        cout << "The amount you need to pay is : RM " << pay << endl << endl;
+        cout << "Enter your " << card_type << " number: " ;
+        cin >> card_num;
+        cout << "\n Enter your CVV : " ;
+        cin >> cvv;
+        cout<<"Payment succesfull";
+    }
+
+}
+/**************************************************************************************************************************************
+ * Function name:   movie_booking
+ * Description  :   This function is used to allow the member the book tickets
+ * Parameters   :   no parameters
+ * Return type  :   no return type
+ * ***********************************************************************************************************************************/
+
 
 void MovieBooking::movie_booking()
 {
