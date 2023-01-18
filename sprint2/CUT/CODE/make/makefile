@@ -3,10 +3,10 @@ INC = /home/system/MovieBooking/sprint2/CUT/CODE/inc
 SRC = /home/system/MovieBooking/sprint2/CUT/CODE/src
 OBJ = /home/system/MovieBooking/sprint2/CUT/CODE/obj
 
-CFLAGS = -c -g -Wall
+CFLAGS = -c -g 
 LFLAGS = -o
 GCC = g++
-CVFLAGS = -Wall -c -g
+CVFLAGS = -c -g
 IFLAGS = -I $(INC)
 
 all : $(BIN)/moviebooking 
